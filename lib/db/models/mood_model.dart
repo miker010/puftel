@@ -1,5 +1,3 @@
-// CREATE TABLE mood (id INTEGER PRIMARY KEY, dateTime INTEGER, value INTEGER, description TEXT, counterId INTEGER)');
-
 class MoodModel {
   final int id;
   String description;

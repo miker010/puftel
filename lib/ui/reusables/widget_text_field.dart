@@ -35,7 +35,6 @@ class _WidgetTextFieldState extends State<WidgetTextField>{
 
   @override
   Widget build(BuildContext context) {
-
     widget.controller.text = widget.initialValue ?? "";
 
     return TextFormField(
@@ -44,29 +43,33 @@ class _WidgetTextFieldState extends State<WidgetTextField>{
       keyboardType: widget.textInputType,
       validator: widget.validator,
       maxLength: widget.maxLength,
-      // initialValue: widget.initialValue ?? "",
       obscureText: widget.hasObscuredTextInput,
       maxLines: widget.lineCount,
-
-
       style : TextStyle(
           fontSize: AppDimensions.fontSizeLarge,
           color: AppColors.appPrimaryColorBlack,
           letterSpacing: AppDimensions.letterSpacing
       ),
-
       decoration: InputDecoration(
           fillColor: AppColors.appPrimaryColorGrey,
           counterText: widget.lineCount == 1? "": null,
           filled: true,
           hintText: widget.labelText,
           focusColor: AppColors.appPrimaryColorBlueDarker,
-          labelStyle: TextStyle (color: AppColors.appPrimaryColorBlueDarker),
-          errorStyle: TextStyle (fontSize: AppDimensions.fontSizeLarge, color: AppColors.appPrimaryColorRed),
-          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.appPrimaryColorWhite)),
-          enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.appPrimaryColorWhite))
+          labelStyle: TextStyle (
+              color: AppColors.appPrimaryColorBlueDarker),
+          errorStyle: TextStyle (
+              fontSize: AppDimensions.fontSizeLarge,
+              color: AppColors.appPrimaryColorRed),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: AppColors.appPrimaryColorWhite)
+          ),
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: AppColors.appPrimaryColorWhite)
+          )
       ),
-
       onSaved: widget.onSaved,
       onChanged: widget.onChanged,
     );

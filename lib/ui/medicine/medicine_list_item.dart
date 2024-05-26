@@ -3,13 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:puftel/app/app_colors.dart';
 import 'package:puftel/app/app_dimensions.dart';
 import 'package:puftel/app/app_messages.dart';
-import 'package:puftel/app/app_routes.dart';
 import 'package:puftel/db/bloc/log_bloc.dart';
-import 'package:puftel/db/models/counter_model.dart';
-import 'package:puftel/db/models/log_model.dart';
 import 'package:puftel/db/models/medicine_model.dart';
 import 'package:puftel/main.dart';
-import 'package:puftel/ui/reusables/widget_primary_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 typedef void OnMedicineSelected(MedicineModel model);
@@ -55,7 +51,7 @@ class MedicineListItem extends StatelessWidget {
                         width: 20,
                         height: 20,
                         decoration: BoxDecoration(
-                            color: AppColors.getColor(item.color ?? 0),
+                            color: AppColors.getColor(item.color),
                             shape: BoxShape.circle
                         ),
                       )
@@ -67,19 +63,27 @@ class MedicineListItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(item.name, style: TextStyle(
-                        color: AppColors.getColor(item.color ?? 0),
-                        fontSize: 20, fontWeight: FontWeight.bold)),
+                        color: AppColors.getColor(item.color),
+                        fontSize: 20, fontWeight: FontWeight.bold)
+                    ),
                     AppDimensions.verticalSmallSpacer,
                     Text(item.description.toString(),
                       style: TextStyle(
                           fontSize: 12,
-                          fontWeight: FontWeight.normal),),
+                          fontWeight: FontWeight.normal)
+                    ),
                     AppDimensions.verticalSmallSpacer,
                     Container(
                       width: double.infinity,
                       padding: EdgeInsets.all(AppDimensions.paddingMedium),
-                      decoration: BoxDecoration(color: AppColors.getColor(item.color ?? 0)),
-                      child: Text(MyApp.local.medicine_list_item_add, style: TextStyle(color: AppColors.appPrimaryColorWhite),),
+                      decoration: BoxDecoration(
+                          color: AppColors.getColor(item.color)
+                      ),
+                      child: Text(
+                        MyApp.local.medicine_list_item_add,
+                        style: TextStyle(
+                            color: AppColors.appPrimaryColorWhite)
+                      ),
                     )
                 ],
                 )
@@ -96,7 +100,9 @@ class MedicineListItem extends StatelessWidget {
                             if (item.link != null && item.link.length>0) {
                               final Uri url = Uri.parse(item.link);
                               if (!await launchUrl(url)) {
-                                AppMessages.quickNotify(context, MyApp.local.menu_cannot_load_site + " ${item.link}");
+                               AppMessages.quickNotify(
+                                context,
+                                MyApp.local.menu_cannot_load_site + " ${item.link}");
                               }
                             }
                           },

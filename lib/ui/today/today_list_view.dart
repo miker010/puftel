@@ -1,16 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:logger/logger.dart';
 import 'package:puftel/app/app_colors.dart';
 import 'package:puftel/app/app_dimensions.dart';
 import 'package:puftel/app/app_messages.dart';
-import 'package:puftel/app/app_routes.dart';
-import 'package:puftel/db/app_db_manager.dart';
-import 'package:puftel/db/bloc/counter_bloc.dart';
 import 'package:puftel/db/bloc/log_bloc.dart';
-import 'package:puftel/db/models/counter_model.dart';
 import 'package:puftel/db/models/log_model.dart';
 import 'package:puftel/db/models/today_model.dart';
 import 'package:puftel/main.dart';
@@ -22,10 +15,8 @@ class TodayListView extends StatefulWidget{
     required this.title}) : super(key: key);
 
   List<TodayModel> model = [];
-
   final String title;
   bool isProcessing = false;
-
   List<LogModel>? logModel;
 
   @override
@@ -66,8 +57,6 @@ class _TodayListViewState extends State<TodayListView>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-
-    //
   }
 
   @override
@@ -113,8 +102,6 @@ class _TodayListViewState extends State<TodayListView>
   }
 
   Widget _buildList(BuildContext context) {
-
-    //TODO: we willen een popup kalender waar je een dag in kunt kiezen
     if (widget.model == null) {
       return _buildNoItems();
     }
@@ -123,39 +110,47 @@ class _TodayListViewState extends State<TodayListView>
       appBar:  AppBar(
         backgroundColor: AppColors.appPrimaryColor,
         iconTheme: IconThemeData(
-          color: AppColors.appPrimaryColorWhite, //change your color here
+          color: AppColors.appPrimaryColorWhite
         ),
-        title: Text("${MyApp.local.today} ${DateFormat('dd MMM yyyy').format(DateTime.now())}", style: TextStyle(color: AppColors.appPrimaryColorWhite),),
-        actions: [
-        ],
+        title: Text(
+          "${MyApp.local.today} ${DateFormat('dd MMM yyyy').format(DateTime.now())}",
+          style: TextStyle(
+              color: AppColors.appPrimaryColorWhite)
+        ),
+        actions: [],
       ),
       //drawer: MenuView(),
       body: Container(
         margin: EdgeInsets.only(top: AppDimensions.marginSmall),
         padding: EdgeInsets.all(AppDimensions.marginSmall),
         child:  SingleChildScrollView(
-      child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          (widget.model.length>0)? Container(): Container(
-              width: double.infinity,
-              decoration: BoxDecoration(color: AppColors.appPrimaryColorGreyDarker),
-              padding: EdgeInsets.all(AppDimensions.paddingMedium),
-              child: Text(MyApp.local.today_no_entries, style: TextStyle(color: AppColors.appPrimaryColorWhite),)),
-          for (var item in widget.model)
-            Column(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TodayListItem(item: item, logs: widget.logModel),
-                AppDimensions.verticalSmallSpacer,
+                (widget.model.length>0)?
+                  Container()
+                  :
+                  Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: AppColors.appPrimaryColorGreyDarker),
+                      padding: EdgeInsets.all(AppDimensions.paddingMedium),
+                      child: Text(
+                        MyApp.local.today_no_entries,
+                        style: TextStyle(color: AppColors.appPrimaryColorWhite)
+                      )
+                  ),
+                  for (var item in widget.model)
+                    Column(
+                      children: [
+                        TodayListItem(item: item, logs: widget.logModel),
+                        AppDimensions.verticalSmallSpacer,
+                      ],
+                    )
               ],
-            )
-        ],
-      ),
-    )
-      )
-    );
-
-
-
-  }
+            ),
+          )
+        )
+      );
+   }
 }

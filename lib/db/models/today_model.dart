@@ -1,9 +1,7 @@
 class TodayModel {
-
   final int id;
   String name;
   int value;
-
   List<TodayModel>? specifications;
 
   TodayModel({

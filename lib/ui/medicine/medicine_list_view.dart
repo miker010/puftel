@@ -1,23 +1,14 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:puftel/app/app_colors.dart';
 import 'package:puftel/app/app_dimensions.dart';
 import 'package:puftel/app/app_messages.dart';
 import 'package:puftel/app/app_routes.dart';
-import 'package:puftel/app/app_storage.dart';
-import 'package:puftel/db/app_db_manager.dart';
 import 'package:puftel/db/bloc/counter_bloc.dart';
-import 'package:puftel/db/bloc/log_bloc.dart';
 import 'package:puftel/db/bloc/medicine_bloc.dart';
-import 'package:puftel/db/models/counter_model.dart';
 import 'package:puftel/db/models/medicine_model.dart';
 import 'package:puftel/main.dart';
 import 'package:puftel/ui/medicine/medicine_add_view.dart';
 import 'package:puftel/ui/medicine/medicine_list_item.dart';
-import 'package:puftel/ui/menu/menu_view.dart';
-import 'package:puftel/ui/reusables/widget_button_nav_bart.dart';
 
 class MedicineListView extends StatefulWidget{
   MedicineListView({
@@ -47,7 +38,6 @@ class _MedicineListViewState extends State<MedicineListView>
       _fetchList();
     });
 
-
     _fetchList();
   }
 
@@ -60,8 +50,6 @@ class _MedicineListViewState extends State<MedicineListView>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-
-    //
   }
 
   @override
@@ -74,51 +62,16 @@ class _MedicineListViewState extends State<MedicineListView>
   }
 
   _fetchList() async {
-
     medicineBloc.getList();
   }
 
   _selectMedicine(MedicineModel model) async {
-
     Navigator.of(context).pop();
-
     Navigator.pushNamed(
         context,
         AppRoutes.medicineAdd,
-        arguments: MedicineAddArguments(
-            model: model
-        )
+        arguments: MedicineAddArguments(model: model)
     );
-
-    /*
-    final counterId = await AppStorage.getNewId("counter");
-
-    //TODO: find a better fix
-    final isFoster = (model.link == "https://www.apotheek.nl/medicijnen/beclometason-inhalatie?product=foster");
-
-    final counterModel = CounterModel(
-        id: counterId,
-        name: model.name,
-        value: 0,
-        description: model.description,
-        maxCount: (isFoster)? 120: 200,
-        warningAtCount: (isFoster)? 100 : 160,
-        link: model.link,
-        color: model.color
-    );
-
-    final manager = AppDBManager();
-    await manager.init();
-    await manager.insertCounter(counterModel);
-
-   // LogBloc().addEntry("${model.name} teller toegevoegd", 0, model.id);
-
-    MyApp.eventBloc.setEvent("ALL", 100, "Counter added");
-
-    Navigator.of(context).pop();
-
-  */
-
   }
 
   Widget _buildNoItems(){
@@ -151,46 +104,47 @@ class _MedicineListViewState extends State<MedicineListView>
   }
 
   Widget _buildList(BuildContext context) {
-
     if (widget.model == null) {
       return _buildNoItems();
     }
 
     return Scaffold(
-        appBar:  AppBar(
-          backgroundColor: AppColors.appPrimaryColor,
-          iconTheme: IconThemeData(
-            color: AppColors.appPrimaryColorWhite, //change your color here
-          ),
-          title: Text(MyApp.local.medicine_list_view_add, style: TextStyle(color: AppColors.appPrimaryColorWhite),),
-          actions: [
-          ],
+      appBar:  AppBar(
+        backgroundColor: AppColors.appPrimaryColor,
+        iconTheme: IconThemeData(
+          color: AppColors.appPrimaryColorWhite
         ),
-        //drawer: MenuView(),
-        body: Container(
-    margin: EdgeInsets.only(top: AppDimensions.marginMedium),
-    padding: EdgeInsets.all(AppDimensions.marginSmall),
-    child: SingleChildScrollView(
-    child:
-    Column(
-      children: [
-      for (var item in widget.model)
-        Column(
-            children: [
-              MedicineListItem(item: item, onMedicineSelected: (model){
-                _selectMedicine(item);
-              }),
-              AppDimensions.verticalSmallSpacer,
-            ],
-          )
-        ],
-       ),
-      )
+        title: Text(MyApp.local.medicine_list_view_add,
+          style: TextStyle(
+              color: AppColors.appPrimaryColorWhite)
+        ),
+        actions: [ ],
+      ),
+      //drawer: MenuView(),
+      body: Container(
+        margin: EdgeInsets.only(top: AppDimensions.marginMedium),
+        padding: EdgeInsets.all(AppDimensions.marginSmall),
+        child: SingleChildScrollView(
+          child:
+              Column(
+                children:
+                [
+                  for (var item in widget.model)
+                    Column(
+                      children: [
+                        MedicineListItem(
+                            item: item,
+                            onMedicineSelected: (model) {
+                              _selectMedicine(item);
+                            }
+                        ),
+                        AppDimensions.verticalSmallSpacer,
+                      ],
+                    )
+                ],
+             )
+            )
         )
     );
   }
-
-
-
-
 }

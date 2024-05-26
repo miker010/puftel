@@ -19,13 +19,12 @@ _MoodInputViewState createState() => _MoodInputViewState();
 }
 
 class _MoodInputViewState extends State<MoodInputView> {
-
   var bloc = MoodBloc();
 
   _changeMoodForToday(MoodStateEnum state){
     Logger().d("Change mood for ${DateTime.now()} to ${state}");
     setState(() {
-      //TODO: Mood type id FIXED to 1 for now
+      //Mood tracker id fixed to 1 for now, as there is currently only one.
       bloc.setTodaysMood(state, 1);
       widget.state = state;
     });
@@ -34,9 +33,6 @@ class _MoodInputViewState extends State<MoodInputView> {
   @override
   void initState() {
     super.initState();
-
-
-
   }
 
   String _getMoodTitle(){

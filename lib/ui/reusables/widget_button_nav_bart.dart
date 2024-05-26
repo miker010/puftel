@@ -27,7 +27,6 @@ class WidgetButtonNavBar extends StatelessWidget{
                     icon,
                     color: AppColors.appPrimaryColorWhite
                 ),
-
               ],
             )
         ),

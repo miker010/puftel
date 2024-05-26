@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:logger/logger.dart';
 import 'package:puftel/app/app_colors.dart';
 import 'package:puftel/app/app_dimensions.dart';
@@ -13,9 +12,6 @@ import 'package:puftel/db/models/log_model.dart';
 import 'package:puftel/main.dart';
 import 'package:puftel/ui/log/log_list_view.dart';
 import 'package:puftel/ui/reusables/widget_primary_button.dart';
-import 'package:vibration/vibration.dart';
-
-import 'counter_detail_view.dart';
 
 typedef void OnCounterClick(int id, int increment);
 typedef void OnDetailsRequest(CounterModel model);
@@ -78,7 +74,6 @@ class _CounterListItemState extends State<CounterListItem> {
   }
 
   String _getFriendlyDate(int date){
-
     final dateCompare = DateTime.fromMillisecondsSinceEpoch(date);
     final dateNow = DateTime.now();
 
@@ -96,7 +91,6 @@ class _CounterListItemState extends State<CounterListItem> {
 
   @override
   Widget build(BuildContext context) {
-
     double screenWidth = MediaQuery.of(context).size.width - (5*AppDimensions.paddingMedium);
 
     if (widget.lastLog == null){
@@ -118,7 +112,6 @@ class _CounterListItemState extends State<CounterListItem> {
         child:   Container(
             padding: EdgeInsets.all(AppDimensions.paddingMedium),
             decoration: BoxDecoration(
-             // color: AppColors.appPrimaryColorWhite,
               border: Border.all(color: AppColors.getColor(item.color ?? 0)),
               borderRadius: BorderRadius.circular(AppDimensions.radiusMedium),
             ),
@@ -172,14 +165,13 @@ class _CounterListItemState extends State<CounterListItem> {
                 Row(
                   children: [
                     Container(
-                      width: screenWidth, // Neem de hele breedte in beslag
-                      //padding: EdgeInsets.only(left: AppDimensions.paddingSmall),
+                      width: screenWidth,
                       child: LinearProgressIndicator(
-                        backgroundColor: AppColors.appPrimaryColorGreyLight, // Grijze achtergrondkleur
-                        valueColor: AlwaysStoppedAnimation<Color>(AppColors.getColor(item.color)),
+                        backgroundColor: AppColors.appPrimaryColorGreyLight,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                            AppColors.getColor(item.color)),
                         value: 1-(item.value/item.maxCount),
-                        // Rode voortgangskleur
-                        minHeight: 4.0, // Hoogte van de balk
+                        minHeight: 4.0
                       ),
                     ),
                   ],
@@ -190,16 +182,19 @@ class _CounterListItemState extends State<CounterListItem> {
                     (widget.todayCount == null)? Text("") :
                     Text(
                         "${MyApp.local.today_counted} ${widget.todayCount}",
-                        style: TextStyle(fontSize: 12, color: AppColors.appPrimaryColorGreyDarker)),
-
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: AppColors.appPrimaryColorGreyDarker)
+                    )
                   ],
                 ),
                 Row(
                   children: [
                     widget.lastLog == null?
                     Text(" ", style: TextStyle(fontSize: 12),):
-                    Text("${MyApp.local.today_last} ${_getFriendlyDate(widget.lastLog!.dateTime)}", // +${widget.lastLog?.value}
-                        style: TextStyle(fontSize: 12, color: AppColors.appPrimaryColorGreyDarker)),
+                    Text("${MyApp.local.today_last} ${_getFriendlyDate(widget.lastLog!.dateTime)}",
+                        style: TextStyle(fontSize: 12, color: AppColors.appPrimaryColorGreyDarker)
+                    ),
                   ],
                 ),
                 Row(
@@ -225,14 +220,16 @@ class _CounterListItemState extends State<CounterListItem> {
                               }),
                           AppDimensions.horizontalSmallSpacer,
                           WidgetPrimaryButton(labelText: " ",
-                              leadingIcon: Icon(Icons.view_agenda_outlined, color: AppColors.appPrimaryColorWhite,),
-                              fillColor: AppColors.getColor(item.color),
-                              splashColor: AppColors.getColor(item.color),
-                              onClicked: (){
-                                Navigator.pushNamed(context, AppRoutes.logList,
-                                    arguments: LogListArguments(counterid: item.id));
-                                }
-                              ),
+                            leadingIcon: Icon(
+                              Icons.view_agenda_outlined,
+                              color: AppColors.appPrimaryColorWhite),
+                            fillColor: AppColors.getColor(item.color),
+                            splashColor: AppColors.getColor(item.color),
+                            onClicked: (){
+                              Navigator.pushNamed(context, AppRoutes.logList,
+                                  arguments: LogListArguments(counterid: item.id));
+                              }
+                            )
                         ],
                       ),
                     ),
@@ -247,14 +244,15 @@ class _CounterListItemState extends State<CounterListItem> {
                                   },
                                   child: Container(
                                       padding: EdgeInsets.all(AppDimensions.paddingSmall),
-                                      child: Icon(Icons.mode_edit_sharp, color: AppColors.appPrimaryColor, size: 16)
+                                      child: Icon(
+                                          Icons.mode_edit_sharp,
+                                          color: AppColors.appPrimaryColor,
+                                          size: 16)
                                   )
                               ),
                             )
                         )
-                    ),
-                    /*
-               ,*/
+                    )
                   ],
                 )
               ],

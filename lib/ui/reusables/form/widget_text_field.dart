@@ -44,27 +44,32 @@ class _WidgetTextFieldState extends State<WidgetTextField>{
         keyboardType: widget.textInputType,
         validator: widget.validator,
         maxLength: widget.maxLength,
-       // initialValue: widget.initialValue ?? "",
         obscureText: widget.hasObscuredTextInput,
         maxLines: widget.lineCount,
-
-
         style : TextStyle(
             fontSize: AppDimensions.fontSizeLarge,
             color: AppColors.appPrimaryColorGreyDark,
             letterSpacing: AppDimensions.letterSpacing
         ),
-
         decoration: InputDecoration(
             fillColor: AppColors.appPrimaryColorGreyLight,
             counterText: widget.lineCount == 1? "": null,
             filled: true,
             hintText: widget.labelText,
             focusColor: AppColors.appPrimaryColorGreyDark,
-            labelStyle: TextStyle (color: AppColors.appPrimaryColorGreyDark),
-            errorStyle: TextStyle (fontSize: AppDimensions.fontSizeLarge, color: AppColors.appPrimaryColorRed),
-            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.appPrimaryColorGreyLight)),
-            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.appPrimaryColorGreyLight))
+            labelStyle: TextStyle (
+                color: AppColors.appPrimaryColorGreyDark),
+            errorStyle: TextStyle (
+                fontSize: AppDimensions.fontSizeLarge,
+                color: AppColors.appPrimaryColorRed),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: AppColors.appPrimaryColorGreyLight)
+            ),
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: AppColors.appPrimaryColorGreyLight)
+            )
         ),
 
         onSaved: widget.onSaved,

@@ -2,19 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:linear_progress_bar/linear_progress_bar.dart';
-import 'package:logger/logger.dart';
 import 'package:puftel/app/app_colors.dart';
 import 'package:puftel/app/app_dimensions.dart';
-import 'package:puftel/app/app_routes.dart';
 import 'package:puftel/db/bloc/log_bloc.dart';
-import 'package:puftel/db/models/counter_model.dart';
-import 'package:puftel/db/models/log_model.dart';
 import 'package:puftel/db/models/mood_model.dart';
-import 'package:puftel/db/models/today_model.dart';
 import 'package:puftel/main.dart';
-import 'package:puftel/ui/log/log_list_view.dart';
-import 'package:puftel/ui/reusables/widget_primary_button.dart';
 
 class MoodReportListItem extends StatefulWidget {
 
@@ -29,7 +21,6 @@ class MoodReportListItem extends StatefulWidget {
 }
 
 class _MoodReportListItemState extends State<MoodReportListItem> {
-
   var logBloc = LogBloc();
 
   bool _isToday (DateTime date){
@@ -39,23 +30,19 @@ class _MoodReportListItemState extends State<MoodReportListItem> {
     if (dateCompare.year == dateNow.year &&
         dateCompare.month == dateNow.month &&
         dateCompare.day == dateNow.day){
-
       return true;
     }
 
     return false;
   }
 
-
   String _getFriendlyDate(DateTime date){
-
     final dateCompare = date;
     final dateNow = DateTime.now();
 
     if (dateCompare.year == dateNow.year &&
         dateCompare.month == dateNow.month &&
         dateCompare.day == dateNow.day){
-
       return MyApp.local.today;
     }
 
@@ -64,13 +51,7 @@ class _MoodReportListItemState extends State<MoodReportListItem> {
 
   @override
   Widget build(BuildContext context) {
-
-    double screenWidth = MediaQuery.of(context).size.width - (5*AppDimensions.paddingMedium);
-
-    final item = widget.item;
-
     DateTime _getDateFromInt(int value){
-
       final strValue = value.toString();
 
       if (strValue.toString().length<8){
@@ -88,23 +69,29 @@ class _MoodReportListItemState extends State<MoodReportListItem> {
     return Material(
       child: InkWell(
           onTap: (){
-              //TODO: we zouden vanaf hier willen door klikken naar het dagrapport voor die dag
+              //TODO: In future we want to be able to move from mood to log report
           },
           child:   Container(
               padding: EdgeInsets.all(AppDimensions.paddingSmall),
-              decoration: BoxDecoration(
-                // color: AppColors.appPrimaryColorWhite,
-               // border: Border.all(color: AppColors.appPrimaryColorGreyDark),
-               // borderRadius: BorderRadius.circular(AppDimensions.radiusMedium),
-              ),
-
+              decoration: BoxDecoration(),
               child: Row(
                 children: [
                   (widget.item.value==0)?
-                  Image.asset("assets/sad.png", width: 32 , color: AppColors.appPrimaryColorRed,):
-                  (widget.item.value==1)?
-                  Image.asset("assets/mweh.png", width: 32, color: AppColors.appPrimaryColorOrange):
-                  Image.asset("assets/ok.png", width: 32, color: AppColors.appPrimaryColorGreen),
+                    Image.asset(
+                      "assets/sad.png",
+                      width: 32 ,
+                      color: AppColors.appPrimaryColorRed)
+                  :
+                    (widget.item.value==1)?
+                      Image.asset(
+                          "assets/mweh.png",
+                          width: 32,
+                          color: AppColors.appPrimaryColorOrange)
+                    :
+                    Image.asset(
+                        "assets/ok.png",
+                        width: 32,
+                        color: AppColors.appPrimaryColorGreen),
                   AppDimensions.horizontalMediumSpacer,
                   Text(_getFriendlyDate(_getDateFromInt(widget.item.dateTime)),
                   style: TextStyle(fontWeight:

@@ -26,6 +26,4 @@ class LogModel {
       'counterId' : counterId,
     };
   }
-
-
 }

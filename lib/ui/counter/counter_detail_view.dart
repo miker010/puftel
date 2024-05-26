@@ -1,9 +1,6 @@
 import 'dart:async';
-
-import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:puftel/app/app_colors.dart';
 import 'package:puftel/app/app_dimensions.dart';
@@ -31,16 +28,10 @@ class CounterDetailView extends StatefulWidget{
     Key? key,
     required this.title}) : super(key: key);
 
-  bool? hasAudio = true;
-  bool? hasVideo = true;
-  bool? hasConnection = null;
-
   final String title;
-
   var warningCount = -1;
   var maxCount = -1;
   CounterModel? model;
-
   String? editedTitle;
   String? editedDescription;
 
@@ -104,8 +95,6 @@ class _CounterDetailViewState extends State<CounterDetailView> {
     Future.delayed(const Duration(milliseconds: 1000), () {
       MyApp.eventBloc.setEvent("ALL", 100, "Max counter updated");
     });
-
-
   }
 
   _incrementCounter(CounterModel model, int increment) async {
@@ -123,20 +112,15 @@ class _CounterDetailViewState extends State<CounterDetailView> {
     AppMessages.notifyYesNo(context,
         MyApp.local.counter_detail_reset + " ${model.name}",
         "${MyApp.local.counter_detail_reset_description}", () async {
-      Vibration.vibrate(
-        pattern: [500, 1000],
-      );
+      Vibration.vibrate(pattern: [500, 1000]);
       await bloc.reset(model.id);
       MyApp.eventBloc.setEvent("ALL", 100, "Warning counter updated");
       LogBloc().addEntry("${model.name} ${MyApp.local.counter_detail_resetted}", 0, model.id);
-
       Navigator.of(context).pop();
-
     });
   }
 
   _delete(CounterModel model) {
-
     AppMessages.notifyYesNo(context, MyApp.local.counter_detail_delete + " ${model.name}", MyApp.local.counter_detail_delete_description, () async {
       await bloc.delete(model.id);
       MyApp.eventBloc.setEvent("ALL", 100, "Warning counter deleted");
@@ -147,7 +131,6 @@ class _CounterDetailViewState extends State<CounterDetailView> {
 
   @override
   dispose() {
-
     super.dispose();
   }
 
@@ -155,8 +138,6 @@ class _CounterDetailViewState extends State<CounterDetailView> {
   Widget build (BuildContext context) {
     return _buildView();
   }
-
-
 
   _selectColor (int id, int colorIndex){
 
@@ -169,7 +150,6 @@ class _CounterDetailViewState extends State<CounterDetailView> {
     Navigator.of(context).pop();
     MyApp.eventBloc.setEvent("ALL", 100, "Color changed");
   }
-
 
   Widget _getPickColor(BuildContext context, int id, int colorIndex){
     
@@ -261,7 +241,6 @@ class _CounterDetailViewState extends State<CounterDetailView> {
   }
 
   _editText() {
-
     _getModel();
 
     var titleField =  WidgetTextField(labelText: MyApp.local.counter_detail_title,
@@ -271,9 +250,7 @@ class _CounterDetailViewState extends State<CounterDetailView> {
         validator: (String? value) {
           return value!.length < 0 ? "" : null;
         },
-        onSaved: (value) {
-
-        },
+        onSaved: (value) {},
         onChanged: (value) {
           widget.editedTitle = value;
           widget.model?.name = value ?? "";
@@ -289,9 +266,7 @@ class _CounterDetailViewState extends State<CounterDetailView> {
         validator: (String? value) {
           return value!.length < 0 ? "" : null;
         },
-        onSaved: (value) {
-
-        },
+        onSaved: (value) { },
         onChanged: (value) {
           widget.editedDescription = value;
           widget.model?.description = value ?? "";
@@ -300,7 +275,6 @@ class _CounterDetailViewState extends State<CounterDetailView> {
 
     titleField.controller.text = widget.model?.name ?? MyApp.local.counter_detail_no_name;
     descriptionField.controller.text = widget.model?.description ?? MyApp.local.counter_detail_no_description;
-
     widget.editedTitle = widget.model?.name ?? "";
     widget.editedDescription = widget.model?.description ?? "";
 
@@ -328,7 +302,6 @@ class _CounterDetailViewState extends State<CounterDetailView> {
                       ],
                     )
                 )
-
             )
         );
       },
@@ -349,7 +322,7 @@ class _CounterDetailViewState extends State<CounterDetailView> {
       appBar: AppBar(
         backgroundColor: AppColors.appPrimaryColor,
         iconTheme: IconThemeData(
-          color: AppColors.appPrimaryColorWhite, //change your color here
+          color: AppColors.appPrimaryColorWhite
         ),
         title: Text(widget.title, style: TextStyle(color: AppColors.appPrimaryColorWhite),),
         actions: [
@@ -369,9 +342,7 @@ class _CounterDetailViewState extends State<CounterDetailView> {
           Container(
             decoration: BoxDecoration(color: AppColors.appSecondaryColorLight),
           ),
-
           Container(
-
               child: SingleChildScrollView(
                   child: Container(
                     margin: EdgeInsets.all(AppDimensions.marginSmall),
@@ -440,8 +411,6 @@ class _CounterDetailViewState extends State<CounterDetailView> {
                                     AppDimensions.verticalSmallSpacer,
                                     Text(_getModel().description, style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal)),
                                     AppDimensions.verticalSmallSpacer,
-
-
                                     Divider(),
                                     Text("${MyApp.local.counter_detail_counter_current_value}: ${_getModel().value.toString()}", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
                                     AppDimensions.verticalMediumSpacer,
@@ -495,13 +464,13 @@ class _CounterDetailViewState extends State<CounterDetailView> {
                                             flex : 1,
                                             child: Column(
                                               children: [
-                                              Text(MyApp.local.counter_detail_warning_at),
-                                              NumberPicker(
-                                              value: widget.warningCount,
-                                              minValue: 10,
-                                              maxValue: 1000,
-                                              onChanged: (value) => setState(() => _changeWarningCount(_getModel(),value)),
-                                              ),
+                                                Text(MyApp.local.counter_detail_warning_at),
+                                                NumberPicker(
+                                                value: widget.warningCount,
+                                                minValue: 10,
+                                                maxValue: 1000,
+                                                onChanged: (value) => setState(() => _changeWarningCount(_getModel(),value)),
+                                                ),
                                               ],
                                               ))
                                       ],
@@ -509,9 +478,7 @@ class _CounterDetailViewState extends State<CounterDetailView> {
                                     WidgetPrimaryButton(labelText: MyApp.local.counter_detail_edit,
                                         splashColor: AppColors.getColor(widget.model?.color ?? 0),
                                         fillColor: AppColors.getColor(widget.model?.color ?? 0),
-
                                         onClicked: () async {
-
                                           if (widget.model != null && widget.warningCount>0) {
                                             await _setWarningCount(
                                                 widget.model!, widget.warningCount);
@@ -523,8 +490,6 @@ class _CounterDetailViewState extends State<CounterDetailView> {
                                           }
 
                                           Navigator.of(context).pop();
-
-
                                     })
                                   ],
                                 )

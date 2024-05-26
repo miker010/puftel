@@ -14,12 +14,10 @@ class WidgetPrimaryButton extends StatelessWidget{
 
   final String labelText;
   final GestureTapCallback onClicked;
-
   final Color fillColor ;
   final Color splashColor;
   final Color labelColor;
   final Icon? leadingIcon;
-
 
   @override
   Widget build(BuildContext context) {

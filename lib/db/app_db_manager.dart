@@ -10,24 +10,17 @@ import 'package:puftel/db/models/today_model.dart';
 import 'package:puftel/main.dart';
 import 'package:puftel/ui/mood/mood_state_enum.dart';
 import 'package:sqflite/sqflite.dart';
-
 import 'models/mood_model.dart';
 import 'models/mood_type_model.dart';
 
 class AppDBManager {
-
   Database? database;
   final int dbVersion = 2;
 
   init() async {
-    // Avoid errors caused by flutter upgrade.
-  // Importing 'package:flutter/widgets.dart' is required.
     WidgetsFlutterBinding.ensureInitialized();
 
       database =  await openDatabase(
-      // Set the path to the database. Note: Using the `join` function from the
-      // `path` package is best practice to ensure the path is correctly
-      // constructed for each platform.
       join(await getDatabasesPath(), 'puftel_database_022.db'),
 
       onUpgrade: (db, oldVersion, newVersion) async {
@@ -60,8 +53,6 @@ class AppDBManager {
         }
 
         database = db;
-
-
         var moodTypeId = await AppStorage.getNewId("moodType");
         await insertMoodType(MoodTypeModel(
             id: moodTypeId,
@@ -92,8 +83,6 @@ class AppDBManager {
           link: 'https://www.apotheek.nl/medicijnen/beclometason-inhalatie?product=foster'
         ));
 
-        //TODO: add atrovent en andere meds
-
         final counterId = await AppStorage.getNewId("counter");
         await insertCounter(CounterModel(
             id: counterId,
@@ -104,14 +93,12 @@ class AppDBManager {
             warningAtCount: 180,
             value: 0));
       },
-      // Set the version. This executes the onCreate function and provides a
-      // path to perform database upgrades and downgrades.
+
       version: dbVersion,
     );
   }
 
   Future<MoodModel?> getTodaysMood(int moodTypeId) async {
-
     DateTime now = DateTime.now();
     String formattedDate = "${now.year}${now.month.toString().padLeft(2,'0')}${now.day.toString().padLeft(2,'0')}";
     int dateAsInt = int.parse(formattedDate);
@@ -136,7 +123,6 @@ class AppDBManager {
   }
 
   Future<void> setTodaysMood(MoodStateEnum state, int moodTypeId) async {
-
     var mood = await getTodaysMood(moodTypeId);
 
     if (mood!=null) {
@@ -205,7 +191,6 @@ class AppDBManager {
   }
 
   int _getTodayFrom(){
-
     final now = DateTime.now();
     final value = DateTime(now.year, now.month, now.day, 0, 0, 0, 0, 0);
     return value.millisecondsSinceEpoch;
@@ -241,11 +226,9 @@ class AppDBManager {
     });
 
     return result;
-
   }
 
   Future<int> getTodaysTotal(int counterId) async {
-
     final fromDate = _getTodayFrom();
     final toDate = _getToDayTo();
 
@@ -268,14 +251,12 @@ class AppDBManager {
     }
   }
 
-  //TODO:
   Future<LogModel?> getLastLog(int? counterId) async {
     final List<Map<String, dynamic>> maps =
-
     (counterId==null) ?
       await database!.rawQuery("select * from log "+
         "order by dateTime DESC LIMIT 1")
-        :
+      :
       await database!.rawQuery("select * from log "+
         "where counterId = " + counterId!.toString() +" "+
         "and value > 0 "+
@@ -292,7 +273,6 @@ class AppDBManager {
     });
 
     return result.firstOrNull;
-
   }
 
   Future<List<MoodModel>> getMoods(int? moodTypeId) async {
@@ -300,7 +280,7 @@ class AppDBManager {
     (moodTypeId==null) ?
     await database!.rawQuery("select * from mood "+
         "order by dateTime DESC LIMIT 2500")
-        :
+    :
     await database!.rawQuery("select * from mood where moodTypeId = "+
         moodTypeId!.toString()+" "+
         "order by dateTime DESC LIMIT 2500");
@@ -316,29 +296,23 @@ class AppDBManager {
   }
 
   Future<List<LogModel>> getLogs(int? counterId, bool? forToday) async {
-
     final fromDate = _getTodayFrom();
     final toDate = _getToDayTo();
 
     final List<Map<String, dynamic>> maps =
-
     (counterId==null && forToday != true) ?
       await database!.rawQuery("select * from log "+
         "order by dateTime DESC LIMIT 2500")
     :
-
     (forToday==true)?
       await database!.rawQuery("select * from log "+
-        //  "where counterId = " + counterId!.toString() +" "+
           " where dateTime >= " + fromDate.toString() +
           " and dateTime <= " + toDate.toString() +
-          " order by dateTime DESC LIMIT 2500") :
-
+          " order by dateTime DESC LIMIT 2500")
+    :
     await database!.rawQuery("select * from log "+
         "where counterId = " + counterId!.toString() +" "+
         "order by dateTime DESC LIMIT 2500");
-
-
 
     return List.generate(maps.length, (i) {
       return LogModel(
@@ -368,7 +342,6 @@ class AppDBManager {
   }
 
   Future<int> getCounterValue(int id) async {
-
     final sql = "select * from counter where id = "+id.toString();
     final List<Map<String, dynamic>> maps = await database!.rawQuery(sql);
     final item = maps.first;
@@ -414,9 +387,7 @@ class AppDBManager {
   }
 
   Future<int> incCounter(int id, int increment) async {
-
    final currentValue = await getCounterValue(id);
-
    final sql = "update counter set value = ${currentValue+increment} where id = ${id}";
    if (await database!.rawUpdate(sql)>0){
      return currentValue+increment;
@@ -427,7 +398,6 @@ class AppDBManager {
   }
 
   Future<void> updateCounter(CounterModel model) async {
-
     await database?.update(
       'counter',
       model.toMap(),

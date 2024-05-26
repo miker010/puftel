@@ -1,14 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:logger/logger.dart';
 import 'package:puftel/app/app_colors.dart';
 import 'package:puftel/app/app_dimensions.dart';
-import 'package:puftel/app/app_routes.dart';
-import 'package:puftel/db/bloc/log_bloc.dart';
-import 'package:puftel/db/models/counter_model.dart';
 import 'package:puftel/db/models/log_model.dart';
-import 'package:puftel/db/models/medicine_model.dart';
-import 'package:puftel/ui/reusables/widget_primary_button.dart';
+
 class LogListItem extends StatelessWidget {
 
   LogListItem({
@@ -19,13 +16,12 @@ class LogListItem extends StatelessWidget {
   LogModel item;
   int? todaysTotal;
 
-
   @override
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
           onTap: () {
-
+              Logger().d("Log item tapped");
           },
           child:  Container(
             width: double.infinity,
@@ -38,9 +34,16 @@ class LogListItem extends StatelessWidget {
                     child:  Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(DateFormat("d MMM yyyy HH:mm").format(DateTime.fromMillisecondsSinceEpoch(item.dateTime)), style: TextStyle(fontSize: 10, fontWeight: FontWeight.normal)),
+                    Text(DateFormat("d MMM yyyy HH:mm").format(
+                        DateTime.fromMillisecondsSinceEpoch(item.dateTime)),
+                        style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.normal)
+                    ),
                     AppDimensions.verticalSmallSpacer,
-                    Text(item.name, style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal)),
+                    Text(item.name, style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.normal)),
                   ],
                 ),
                 ),

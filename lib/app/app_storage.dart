@@ -1,11 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppStorage {
-
-  static final FlutterSecureStorage secureStorage = const FlutterSecureStorage();
   static SharedPreferences? prefs;
 
   static Future<SharedPreferences> _getPrefs() async{
@@ -26,7 +22,6 @@ class AppStorage {
     await prefs.setBool("IS_INT", true);
   }
 
-
   static Future<bool> getIsInternational() async {
     final prefs = await _getPrefs();
     var newValue = await prefs.getBool("IS_INT") ?? false;
@@ -38,14 +33,10 @@ class AppStorage {
     await prefs.setBool("AGREED", true);
   }
 
-
-
-
   static Future getNewId(String entity) async {
     final prefs = await _getPrefs();
     var newValue = (await prefs.getInt(entity) ?? 0) + 1;
     await prefs.setInt(entity, newValue);
     return newValue;
   }
-
 }

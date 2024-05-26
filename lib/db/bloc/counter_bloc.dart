@@ -1,8 +1,6 @@
 import 'package:puftel/db/app_db_manager.dart';
 import 'package:puftel/db/models/counter_inc_result.dart';
 import 'package:puftel/db/models/counter_model.dart';
-import 'package:puftel/db/models/log_model.dart';
-import 'package:puftel/db/models/medicine_model.dart';
 import 'package:rxdart/rxdart.dart';
 
 class CounterBloc {
@@ -58,7 +56,6 @@ class CounterBloc {
     await _init();
     await _dbManager.setWarningCount(id, value);
   }
-
 
   inc(int id, int increment) async {
     await _init();

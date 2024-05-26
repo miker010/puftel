@@ -1,7 +1,4 @@
 import 'dart:io';
-
-import 'package:badges/badges.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:package_info/package_info.dart';
@@ -12,57 +9,41 @@ import 'package:puftel/app/app_routes.dart';
 import 'package:puftel/app/app_storage.dart';
 import 'package:puftel/main.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import 'menu_item_model.dart';
 
 class MenuView extends StatefulWidget {
 
   String? version;
-  //MenuModel model;
 
   _MenuViewState createState() => _MenuViewState();
 }
 
 class _MenuViewState extends State<MenuView>{
-
   final MENU_ID_DASHBOARD = "MENU_ID_DASHBOARD";
   final MENU_ID_MEDICINES = "MENU_ID_MEDICINES";
   final MENU_ID_LOGS = "MENU_ID_LOGS";
   final MENU_ID_CHART = "MENU_ID_CHART";
-
-  final MENU_ID_CONVERSATIONS = "MENU_ID_CONVERSATIONS";
-  final MENU_ID_VIDEO_TEST = "MENU_ID_VIDEO_TEST";
   final MENU_ID_ABOUTD = "MENU_ID_ABOUTD";
   final MENU_ID_MORE = "MENU_ID_MORE";
   final MENU_ID_SUPPORT = "MENU_ID_SUPPORT";
-
   final MENU_ID_TODAY = "MENU_ID_TODAY";
   final MENU_ID_MOOD_REPORT = "MENU_ID_MOOD_REPORT";
-
   final MENU_ID_LOGOUT = "MENU_ID_LOGOUT";
   final MENU_DISCLAIMER = "MENU_DISCLAIMER";
-
-  final MENU_TEST_PUSH_1 = "MENU_TEST_PUSH_1";
-  final MENU_TEST_PUSH_2 = "MENU_TEST_PUSH_2";
-  final MENU_TEST_PUSH_3 = "MENU_TEST_PUSH_3";
-  final MENU_TEST_PUSH_4 = "MENU_TEST_PUSH_4";
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      setState(() {
-      });
+      setState(() {});
     });
     _getVersion();
   }
 
-  _getVersion() async{
+  _getVersion() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
     final String version = packageInfo.version;
     final String buildNumber = packageInfo.buildNumber;
-
-    final isLive = false;
 
     setState(() {
       widget.version = "${version} - ${buildNumber}";
@@ -76,21 +57,35 @@ class _MenuViewState extends State<MenuView>{
   @override
   Widget build(BuildContext context) {
     final model = <MenuItemModel>[];
-
-    model.add(MenuItemModel(id: MENU_ID_DASHBOARD, title: MyApp.local.menu_overview, appRoute: AppRoutes.dashboard));
-
-    model.add(MenuItemModel(id: MENU_ID_TODAY, title: MyApp.local.menu_today, appRoute: AppRoutes.todayReport));
-    model.add(MenuItemModel(id: MENU_ID_LOGS, title: MyApp.local.menu_log, appRoute: AppRoutes.logList));
-
-    model.add(MenuItemModel(id: MENU_ID_MOOD_REPORT, title: MyApp.local.mood_how_it_went, appRoute: AppRoutes.moodReport));
-
-    model.add(MenuItemModel(id: MENU_ID_MEDICINES, title: MyApp.local.menu_medicines, appRoute: AppRoutes.medicineList));
-
-   // model.add(MenuItemModel(id: MENU_ID_CHART, title: "TODO Chart", appRoute: AppRoutes.chart));
-
-    model.add(MenuItemModel(id: MENU_DISCLAIMER, title: MyApp.local.menu_disclaimer, appRoute: AppRoutes.disclaimer));
-   // model.add(MenuItemModel(id: MENU_ID_ABOUTD, title: MyApp.local.menu_about, appRoute: AppRoutes.about));
-    model.add(MenuItemModel(id: MENU_ID_MORE, title: MyApp.local.menu_read_more, appRoute: AppRoutes.about, customAction: "MORE"));
+    model.add(MenuItemModel(
+        id: MENU_ID_DASHBOARD,
+        title: MyApp.local.menu_overview,
+        appRoute: AppRoutes.dashboard));
+    model.add(MenuItemModel(
+        id: MENU_ID_TODAY,
+        title: MyApp.local.menu_today,
+        appRoute: AppRoutes.todayReport));
+    model.add(MenuItemModel(
+        id: MENU_ID_LOGS,
+        title: MyApp.local.menu_log,
+        appRoute: AppRoutes.logList));
+    model.add(MenuItemModel(
+        id: MENU_ID_MOOD_REPORT,
+        title: MyApp.local.mood_how_it_went,
+        appRoute: AppRoutes.moodReport));
+    model.add(MenuItemModel(
+        id: MENU_ID_MEDICINES,
+        title: MyApp.local.menu_medicines,
+        appRoute: AppRoutes.medicineList));
+    model.add(MenuItemModel(
+        id: MENU_DISCLAIMER,
+        title: MyApp.local.menu_disclaimer,
+        appRoute: AppRoutes.disclaimer));
+    model.add(MenuItemModel(
+        id: MENU_ID_MORE,
+        title: MyApp.local.menu_read_more,
+        appRoute: AppRoutes.about,
+        customAction: "MORE"));
 
     return Drawer(
         child : Container(
@@ -108,10 +103,17 @@ class _MenuViewState extends State<MenuView>{
                           SizedBox(
                             width: 52,
                             height: 52,
-                            child: (MyApp?.isInternational==true)? Image.asset("assets/appstore_puffcounter.png") : Image.asset("assets/appstore.png"),
+                            child: (MyApp?.isInternational==true)?
+                            Image.asset("assets/appstore_puffcounter.png") :
+                            Image.asset("assets/appstore.png"),
                           ),
                           AppDimensions.verticalMediumSpacer,
-                          Text(MyApp.local.appTitle, style: TextStyle(color: AppColors.appPrimaryColorBlueDark, fontSize: 24, fontWeight:  FontWeight.bold),),
+                          Text(MyApp.local.appTitle,
+                            style: TextStyle(
+                                color: AppColors.appPrimaryColorBlueDark,
+                                fontSize: 24,
+                                fontWeight:  FontWeight.bold)
+                          ),
                           (widget.version==null)?
                           Container() :
                           Container(
@@ -121,23 +123,25 @@ class _MenuViewState extends State<MenuView>{
                                   Text("${MyApp.local.menu_version} ${widget.version}",
                                     style: TextStyle(
                                         fontSize: 12,
-                                        color: AppColors.appPrimaryColorBlueDark),)
+                                        color: AppColors.appPrimaryColorBlueDark)
+                                  )
                                 ],
                               )
                           )
-                        ],
+                        ]
                       )
                     )
                 ),
-
                 for(int i=0;i<model.length;i++)
                   ListTile (
                     title: Row(
                       children: [
-                        Text("${model[i].title}", style: TextStyle(color:AppColors.appPrimaryColorBlueDark),),
+                        Text(
+                          "${model[i].title}",
+                          style: TextStyle(
+                              color:AppColors.appPrimaryColorBlueDark)
+                        ),
                         AppDimensions.horizontalSmallSpacer,
-                        //(model[i].badge != null)?
-                        //Badge(badgeContent: Text("${model[i].badge}", style: TextStyle(color: AppColors.appPrimaryColorWhite),)) :
                         Container()
                       ],
                     ),
@@ -147,13 +151,12 @@ class _MenuViewState extends State<MenuView>{
                       if (model[i].customAction != null){
                         if (model[i].customAction == AppRoutes.CUSTOM_ACTION_LOGOUT){
                         }
-                        else if (model[i].customAction == "SUPPORT"){
+                        else if (model[i].customAction == "SUPPORT") {
                           if (!await launchUrl(Uri.parse("https://www.buymeacoffee.com/puftel"))) {
                             AppMessages.quickNotify(context, MyApp.local.menu_cannot_load_site);
                           }
                         }
                         else if (model[i].customAction == "MORE") {
-
                           final isInternational = await AppStorage.getIsInternational();
                           if (isInternational) {
                             if (!await launchUrl(Uri.parse(
@@ -190,11 +193,10 @@ class _MenuViewState extends State<MenuView>{
                         AppMessages.quickNotify(context, MyApp.local.menu_cannot_load_site);
                         }
                       },
-                      child: Image.asset("assets/buymeacoffee.png", width: 150,)
+                      child: Image.asset("assets/buymeacoffee.png", width: 150)
                     ),
                   ),
                 )
-
               ],
             )
         )

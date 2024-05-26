@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:puftel/app/app_colors.dart';
@@ -34,27 +33,19 @@ class _DashboardViewState extends State<DashboardView> with WidgetsBindingObserv
     super.didChangeAppLifecycleState(state);
     switch (state) {
       case AppLifecycleState.resumed:
-      // App is resumed (foreground)
-      // Dit is vergelijkbaar met 'onResume' in Android
-        print('App Lifecycle: resumed');
+        Logger().d("dashboard - resume - refresh");
         setState(() {
-          Logger().d("dashboard - resume - refresh");
+
         });
         _checkMood();
         break;
       case AppLifecycleState.inactive:
-      // App is in an inactive state and is not receiving user input
-      // Dit gebeurt bijvoorbeeld bij tijdelijke onderbrekingen zoals een inkomend gesprek
         print('App Lifecycle: inactive');
         break;
       case AppLifecycleState.paused:
-      // App is paused (background)
-      // Dit is vergelijkbaar met 'onPause' in Android
         print('App Lifecycle: paused');
         break;
       case AppLifecycleState.detached:
-      // App is detached from the view
-      // Dit gebeurt als de view hosting de Flutter-app is verwijderd
         print('App Lifecycle: detached');
         break;
     }
@@ -64,8 +55,6 @@ class _DashboardViewState extends State<DashboardView> with WidgetsBindingObserv
 
   @override
   void didChangeDependencies() {
-
-
     super.didChangeDependencies();
   }
 
@@ -80,7 +69,6 @@ class _DashboardViewState extends State<DashboardView> with WidgetsBindingObserv
   initState() {
     super.initState();
     WidgetsBinding.instance?.addObserver(this);
-
     _checkIsInternational();
     _checkAgreement();
     _checkMood();
@@ -103,6 +91,7 @@ class _DashboardViewState extends State<DashboardView> with WidgetsBindingObserv
       }
     });
 
+    // For now there is just one mood tracker
     Logger().d("Check todays mood for type 1");
     bloc.getTodaysMood(1);
   }
@@ -127,17 +116,18 @@ class _DashboardViewState extends State<DashboardView> with WidgetsBindingObserv
 
   @override
   Widget build (BuildContext context) {
-
     MyApp.local = AppLocalizations.of(context);
-
 
     return Scaffold(
       appBar:  AppBar(
         backgroundColor: AppColors.appPrimaryColor,
         iconTheme: IconThemeData(
-          color: AppColors.appPrimaryColorWhite, //change your color here
+          color: AppColors.appPrimaryColorWhite,
         ),
-        title: Text(MyApp.local.appTitle, style: TextStyle(color: AppColors.appPrimaryColorWhite),),
+        title: Text(MyApp.local.appTitle,
+          style: TextStyle(
+              color: AppColors.appPrimaryColorWhite)
+        ),
         actions: [
           WidgetButtonNavBar(
             icon: Icons.add,
@@ -150,9 +140,7 @@ class _DashboardViewState extends State<DashboardView> with WidgetsBindingObserv
       drawer: MenuView(),
       body: Stack(
         children: [
-          Container(
-
-          ),
+          Container(),
           Container(
             decoration: BoxDecoration(color: AppColors.appPrimaryColorWhite),
               child: SingleChildScrollView(

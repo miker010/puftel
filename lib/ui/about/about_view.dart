@@ -1,10 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:puftel/app/app_colors.dart';
 import 'package:puftel/app/app_dimensions.dart';
-import 'package:puftel/app/app_storage.dart';
 import 'package:puftel/main.dart';
-import 'package:puftel/ui/reusables/widget_primary_button.dart';
 
 class AboutView extends StatefulWidget{
   AboutView({
@@ -35,19 +32,16 @@ class _AboutViewState extends State<AboutView> {
       appBar:  AppBar(
         backgroundColor: AppColors.appPrimaryColor,
         iconTheme: IconThemeData(
-          color: AppColors.appPrimaryColorWhite, //change your color here
+          color: AppColors.appPrimaryColorWhite,
         ),
-        title: Text(MyApp.local.appTitle, style: TextStyle(color: AppColors.appPrimaryColorWhite),),
-        actions: [
-
-        ],
+        title: Text(
+          MyApp.local.appTitle,
+          style: TextStyle(color: AppColors.appPrimaryColorWhite),),
+        actions: [],
       ),
-
       body: Stack(
         children: [
-          Container(
-
-          ),
+          Container(),
           Container(
               child: SingleChildScrollView(
                 child: Column(
@@ -58,11 +52,12 @@ class _AboutViewState extends State<AboutView> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(MyApp.local.about_title, style: TextStyle(fontWeight: FontWeight.bold),),
+                            Text(MyApp.local.about_title,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold)
+                            ),
                             AppDimensions.verticalMediumSpacer,
-
                             Text(MyApp.local.about_content),
-
                           ],
                         )
                     )

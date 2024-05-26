@@ -1,4 +1,6 @@
 class CounterModel {
+  static const defaultMaxCount = 200;
+  static const defaultWarningLevel = 170;
 
   final int id;
   String name;
@@ -14,8 +16,8 @@ class CounterModel {
     required this.name,
     required this.value,
     required this.description,
-    this.maxCount = 200,
-    this.warningAtCount = 170,
+    this.maxCount = defaultMaxCount,
+    this.warningAtCount = defaultWarningLevel,
     this.color = 0,
     this.link = ""
   });

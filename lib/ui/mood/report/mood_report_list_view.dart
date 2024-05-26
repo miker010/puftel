@@ -1,22 +1,10 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:logger/logger.dart';
 import 'package:puftel/app/app_colors.dart';
 import 'package:puftel/app/app_dimensions.dart';
 import 'package:puftel/app/app_messages.dart';
-import 'package:puftel/app/app_routes.dart';
-import 'package:puftel/db/app_db_manager.dart';
-import 'package:puftel/db/bloc/counter_bloc.dart';
-import 'package:puftel/db/bloc/log_bloc.dart';
 import 'package:puftel/db/bloc/mood_bloc.dart';
-import 'package:puftel/db/models/counter_model.dart';
 import 'package:puftel/db/models/mood_model.dart';
-import 'package:puftel/db/models/today_model.dart';
 import 'package:puftel/main.dart';
-import 'package:puftel/ui/today/today_list_item.dart';
-
 import 'mood_report_list_item.dart';
 
 class MoodReportListView extends StatefulWidget{
@@ -58,8 +46,6 @@ class _MoodReportListViewState extends State<MoodReportListView>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-
-    //
   }
 
   @override
@@ -72,6 +58,7 @@ class _MoodReportListViewState extends State<MoodReportListView>
   }
 
   _fetchList() async {
+    // There is currently one 1 mood tracker
     bloc.getList(1);
   }
 
@@ -110,11 +97,13 @@ class _MoodReportListViewState extends State<MoodReportListView>
         appBar:  AppBar(
           backgroundColor: AppColors.appPrimaryColor,
           iconTheme: IconThemeData(
-            color: AppColors.appPrimaryColorWhite, //change your color here
+            color: AppColors.appPrimaryColorWhite,
           ),
-          title: Text(MyApp.local.mood_how_it_went, style: TextStyle(color: AppColors.appPrimaryColorWhite),),
-          actions: [
-          ],
+          title: Text(
+            MyApp.local.mood_how_it_went,
+            style: TextStyle(color: AppColors.appPrimaryColorWhite)
+          ),
+          actions: [],
         ),
         //drawer: MenuView(),
         body: Container(
@@ -128,21 +117,23 @@ class _MoodReportListViewState extends State<MoodReportListView>
                       width: double.infinity,
                       decoration: BoxDecoration(color: AppColors.appPrimaryColorGreyDarker),
                       padding: EdgeInsets.all(AppDimensions.paddingMedium),
-                      child: Text(MyApp.local.mood_no_entries, style: TextStyle(color: AppColors.appPrimaryColorWhite),)),
+                      child: Text(
+                        MyApp.local.mood_no_entries,
+                        style: TextStyle(
+                            color: AppColors.appPrimaryColorWhite)
+                      )
+                  ),
                   for (var item in widget.model)
                     Column(
                       children: [
                         MoodReportListItem(item: item),
                         AppDimensions.verticalSmallSpacer,
-                      ],
+                      ]
                     )
                 ],
               ),
             )
         )
     );
-
-
-
   }
 }
