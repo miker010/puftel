@@ -7,9 +7,9 @@ alter or redistribute this app, under the condition that you do not charge for t
 you maintain the credits as is, that means you ensure that the text of the about view and the
 donation and web reference links will remain in the app.
 
-# https://play.google.com/store/apps/details?id=nl.mikerworks.puftel&hl=en_US
+https://play.google.com/store/apps/details?id=nl.mikerworks.puftel&hl=en_US
 
-# https://apps.apple.com/ca/app/puftel/id6469622485
+https://apps.apple.com/ca/app/puftel/id6469622485
 
 
 ## About this app and why I developed it
