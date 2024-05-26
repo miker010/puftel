@@ -1,0 +1,86 @@
+{
+  "appTitle": "Puftel",
+
+  "about_title" : "About this app",
+  "about_content": "This app was developed by Miker Works under the name Finiware. I developed this app because my son has asthma and needs various medications through a spacer (puffs) every day. Of course you keep track of it on paper, but there is an app for that as of now. This app keeps track of how much has been used per medicine and can therefore indicate when a new medicine is needed. Often the maximum number of puffs is 200. This is the default amount in the app. However, you can adjust this yourself. This also applies to the number for warning level: the moment at which the counter changes color so that you can order additional medications from the pharmacy or doctor in a timely manner. Be sure to read the disclaimer: You are responsible for correct administration of the necessary medications. If in doubt, always consult your doctor. You can add additional medications to the counter list yourself. You will find some of them in the list if you click on the button, such as salbutamol, qvar and foster. You can add other medications yourself. You can adjust the data for each medicine counter, such as the name, description and color. You can also reset or correct the counter via the settings screen. To do this, press the pencil button in the overview screen. All counters can be found in the overview screen. There you can quickly see the current counter reading, but also increase the counter by 1 or 4 puffs. The menu options, including the logbook, are visible via the menu button at the top left. This contains the date and time, the medicine and the amount of medicine. I hope this app is useful for you too. Rotterdam, October 2023, Mike van Drongelen",
+
+  "filter_all_counters" : "All counters",
+  "filter_log_book" : "Logbook",
+
+  "chart_no_graphs" : "There are no graphs to display. New graphs will appear here after increasing the counter.",
+
+  "counter_detail_caption" : "Medicine counter",
+  "counter_detail_max_changed_to" : "maximum number changed to",
+  "counter_detail_warning_level_changed_to" : "warning level changed to",
+  "counter_detail_changed_with" : "changed with",
+  "counter_detail_reset" : "Reset",
+  "counter_detail_reset_description" : "Are you sure you want to reset the counter to 0?",
+  "counter_detail_resetted" : "counter reset",
+  "counter_detail_delete" : "Delete",
+  "counter_detail_delete_description" : "Are you sure you want to delete the counter?",
+  "counter_detail_deleted" : "counter deleted",
+  "counter_detail_pick_color" : "Pick color",
+  "counter_detail_title" : "Title",
+  "counter_detail_description" : "Description",
+  "counter_detail_no_name" : "No name",
+  "counter_detail_no_description" : "No description",
+  "counter_detail_save" : "Save",
+  "counter_detail_counter_current_value" : "Counter reading",
+  "counter_detail_max" : "Maximum number",
+  "counter_detail_warning_at" : "Warn at",
+  "counter_detail_edit" : "Edit",
+  "counter_item_increased_with" : "increased by",
+  "counter_list_no_counters" : "There are no counters to show. Click the + button at the top right to add new counters.",
+
+  "counter_details_resetted" : "counter has been reset",
+  "counter_details_deleted": "counter removed",
+  "counter_details_max_changed" : "maximum changed to",
+  "counter_details_warning_changed" : "warning level changed to",
+  "counter_details_edited" : "modified with",
+
+  "disclaimer_title" : "Before using the app",
+  "disclaimer_content" : "To use the app, you must read the text below completely and click on the 'Agree' button before using the app. This app is a tool for tracking the number of puffs you have taken of certain medications, especially those for asthma, so you know when need new medications. Always follow the doctor's instructions when it comes to the type of medicine you are taking, as well as the amount and frequency. The information in this app is not intended as a substitute for the doctor's advice but only a tool for keeping track of the number of inhalations given. The creator of this app accepts no liability whatsoever regarding the use or functioning of this app. You are always responsible for correct administration of the required medications. If in doubt, always consult your doctor.",
+  "disclaimer_agree" : "Agree",
+  "log_list_all_counters" : "All counters" ,
+  "log_list_log_file" : "Log",
+  "log_list_no_entries" : "There are no log lines to show. After increasing the counter, new entries will appear here.",
+
+  "medicine_list_item_add" : "Click to add",
+  "medicine_link_error" : "Cannot load.",
+
+  "medicine_list_view_other_medicine" : "Other medicine",
+  "medicine_list_view_other_medicine_description" : "Do you have another medicine for which you would like to keep a counter? You can provide a name and description yourself.",
+  "medicine_list_view_add" : "Add medicine counter",
+
+  "menu_overview" : "Counters",
+  "menu_medicines" : "Medicines",
+  "menu_log" : "Log report",
+  "menu_disclaimer": "Disclaimer",
+  "menu_about" : "About",
+  "menu_read_more" : "Read more...",
+  "menu_version" : "Version",
+  "menu_cannot_load_site" : "Cannot load website.",
+  "menu_today": "Day report",
+
+  "no" : "No",
+  "yes" : "Yes",
+
+  "preset_medicine_salbutomol" : "Salbutamol (200) is available in inhalation powder, inhalation liquid, spray, under the brand names Airomir, Ventolin, Salamol Steri-Neb. And like the generic Salbutamol. If a bronchodilator and a bronchodilator/anti-inflammatory are to be administered simultaneously, use the bronchodilator (blue) first and, after five to ten minutes, the airway protector/anti-inflammatory (orange or brown). Always consult your doctor first about how, how much and for how long you can use this medicine. Also make sure to set up the maximum number of puffs for this medicine in the apps counter detail view. By default the maximum number of puffs is set to 200." ,
+  "preset_medicine_qvar" : "Qvar (100 or more) contains beclometasone in a metered dose inhalation. Seretide contains salmeterol and fluticasone. this is a combination of a long-acting airway dilator and a locally active corticosteroid. Qvar only contains the locally active corticosteroid comparable to, for example, becotide. The main difference with other inhaled corticosteroids is that Qvar uses a different carrier gas so that the corticosteroid is dissolved instead of in a suspension. Always consult your doctor first about how, how much and for how long you can use this medicine. Also make sure to set up the maximum number of puffs for this medicine in the apps counter detail view. By default the maximum number of puffs is set to 200.",
+  "preset_medicine_foster" : "Foster (120) is a medicine belonging to the group of bronchodilators in combination with corticosteroids or adrenal cortex hormones, which ensures that narrowed airways are widened and that the airways are protected against stimuli that cause shortness of breath. Always consult your doctor first about how, how much and for how long you can use this medicine. Also make sure to set up the maximum number of puffs for this medicine in the apps counter detail view. By default the maximum number of puffs is set to 200.",
+  "preset_medicine_other" : "Salbutamol (200) is available in inhalation powder, inhalation liquid, spray, under the brand names Airomir, Ventolin, Salamol Steri-Neb. And like the generic Salbutamol. If a bronchodilator and a bronchodilator/anti-inflammatory are to be administered simultaneously, use the bronchodilator (blue) first and, after five to ten minutes, the airway protector/anti-inflammatory (orange or brown). Always consult your doctor first about how, how much and for how long you can use this medicine. Also make sure to set up the maximum number of puffs for this medicine in the apps counter detail view. By default the maximum number of puffs is set to 200.",
+
+  "mood_how_is_it_going_today" : "How short of breath are you today?",
+  "mood_how_is_it_going_today_ok" : "Not short of breath",
+  "mood_how_is_it_going_today_mweh" : "A little short of breath",
+  "mood_how_is_it_going_today_sad" : "Short of breath",
+  "mood_how_it_went" : "Shortness of breath per day",
+  "mood_no_entries" : "This report is not yet available.",
+
+  "today_counted" : "Counted today:",
+  "today_last" : "Last time at:",
+  "today_no_entries" : "Nothing has been counted for today.",
+
+  "today" : "Today",
+  "gisteren" : "Yesterday"
+}

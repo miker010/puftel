@@ -1,0 +1,89 @@
+{
+  "appTitle": "Puftel",
+
+  "about_title" : "Over deze app",
+  "about_content": "Deze app is door Miker Works ontwikkeld ondr de naam Finiware. Ik heb deze app ontwikkeld omdat mijn zoon astma heeft en diverse medicijnen via een voorzetkamer (pufs) dagelijks nodig heeft. En dat kun je op papier bijhouden maar there is an app for that per heden. Deze app houdt per medicijn bij hoeveel er is gebruikt en kan dus aangeven wanneer er een nieuw medicijn nodig is. Vaak is het maximale aantal pufs 200. Dit is de standaardhoeveelheid in de app. U kunt deze echter zelf aanpassen. Zo ook het aantal voor het waarschuwingsniveau: het moment waarop de teller van kleur verandert zodat u tijdig bij de apotheek of arts medicijnen kunt bijbestellen. Leesf vooral ook de disclaimer: U bent zelf verantwoordelijk voor een juiste toedoening van de benodigde medicijnen. Raadpleeg bij twijfel altijd uw arts. U kunt zelf aanvullende medicijnen aan de tellerlijst toevoegen. Een aantal vindt u terug in de lijst als u op de knop klikt, zoals salbutamol, qvar en foster. Andere medicijnen kunt u zelf toevoegen. Per medicijnteller kunt u de gegevens aanpassen, zoals de naam, de beschrijving en de kleur. Ook kunt u de teller resetten of corrigeren via het instellingenscherm. Druk daartoe op het potlood-knopje in het overzichtscherm. Alle tellers vindt u in het overzichtsgescherm. Daar kunt u snel de huidige tellerstand zien maar ook de teller met 1 of 4 pufs verhogen. Via de menu-knop linksboven aan zijn de menu opties zichtbaar, waaronder het logboek. Daarin is de datum en tijd, het medicijn en de hoeveelheid medicijn terug te vinden. Ik hoop dat deze app ook voor u handig in het gebruik is.  Rotterdam, Oktober 2023, Mike van Drongelen",
+
+  "filter_all_counters" : "Alle tellers",
+  "filter_log_book" : "Logboek",
+
+  "chart_no_graphs" : "Er zijn geen grafieken om te tonen. Na het ophogen van de teller verschijnen hier nieuwe grafieken.",
+
+  "counter_detail_caption" : "Medicijnteller",
+  "counter_detail_max_changed_to" : "maximum aantal gewijzigd naar",
+  "counter_detail_warning_level_changed_to" : "waarschuwingsniveau gewijzigd naar",
+  "counter_detail_changed_with" : "gewijzigd met",
+  "counter_detail_reset" : "Reset",
+  "counter_detail_reset_description" : "Weet u zeker dat u de teller op 0 wilt zetten?",
+  "counter_detail_resetted" : "teller gereset",
+  "counter_detail_delete" : "Verwijderen",
+  "counter_detail_delete_description" : "Weet u zeker dat u de teller wilt verwijderen?",
+  "counter_detail_deleted" : "teller verwijderd",
+  "counter_detail_pick_color" : "Kies kleur",
+  "counter_detail_title" : "Titel",
+  "counter_detail_description" : "Omschrijving",
+  "counter_detail_no_name" : "Geen naam",
+  "counter_detail_no_description" : "Geen beschrijving",
+  "counter_detail_save" : "Opslaan",
+  "counter_detail_counter_current_value" : "Tellerstand",
+  "counter_detail_max" : "Maximaal aantal",
+  "counter_detail_warning_at" : "Waarschuwen bij",
+  "counter_detail_edit" : "Wijzigen",
+  "counter_item_increased_with" : "verhoogd met",
+  "counter_list_no_counters" : "Er zijn geen tellers om te tonen. Klik op de + knop rechts bovenaan om nieuwe tellers toe te voegen.",
+
+  "counter_details_resetted" : "teller gereset",
+  "counter_details_deleted": "teller verwijderd",
+  "counter_details_max_changed" : "maximum aantal gewijzigd naar",
+  "counter_details_warning_changed" : "waarschuwingsniveau gewijzigd naar",
+  "counter_details_edited" : "gewijzigd met",
+
+
+  "disclaimer_title" : "Voor het gebruik van de app",
+  "disclaimer_content" : "Voor het gebruik van de app dient u de onderstaande tekst volledig door te lezen en bij akkoord op de 'Akkoord'-knop te klikken voordat u de app kunt gebruiken. Deze app is een hulpmiddel voor het bijhouden van het aantal pufs dat u van bepaalde medicijnen, in het bijzonder die voor astma, hebt gebruikt, zodat u weet wanneer u nieuwe medicijnen nodig hebt. Volg altijd de aanwijzingen van de arts op als het gaat om het soort medicijn dat u gebruikt, maar ook voor de hoeveelheid en frequentie. De informatie in deze app is niet bedoeld als vervanging voor het advies van de arts maar slechts een hulpmiddel voor het bijhouden van het aantal gegeven inhalaties. De maker van deze app aanvaardt geen enkele aansprakelijkheid met betrekking tot het gebruik of het functioneren van deze app. U bent altijd zelf verantwoordelijk voor een juiste toedoening van de benodigde medicijnen. Raadpleeg bij twijfel altijd uw arts.",
+  "disclaimer_agree" : "Akkoord",
+
+  "log_list_all_counters" : "Alle tellers" ,
+  "log_list_log_file" : "Logboek",
+  "log_list_no_entries" : "Er zijn geen logregels om te tonen. Na het ophogen van de teller verschijnen hier nieuwe regels.",
+
+  "medicine_list_item_add" : "Klik om toe te voegen",
+  "medicine_link_error" : "Kan niet laden.",
+
+  "medicine_list_view_other_medicine" : "Ander medicijn",
+  "medicine_list_view_other_medicine_description" : "Heeft u een ander medicijn waarvoor u een teller wilt bijhouden? U kunt zelf een naam en een beschrijving opgeven.",
+  "medicine_list_view_add" : "Medicijnteller toevoegen",
+
+  "menu_overview" : "Tellers",
+  "menu_medicines" : "Medicijnen",
+  "menu_log" : "Logboek",
+  "menu_disclaimer": "Disclaimer",
+  "menu_about" : "Over",
+  "menu_read_more" : "Lees meer...",
+  "menu_version" : "Versie",
+  "menu_cannot_load_site" : "Kan website niet laden.",
+  "menu_today": "Dag rapportage",
+
+  "no" : "Nee",
+  "yes" : "Ja",
+
+  "preset_medicine_salbutomol" : "Salbutamol (200) is te krijgen in inhalatiepoeder, inhalatievloeistof, spray, onder de merknamen Airomir, Ventolin, Salamol Steri-Neb. En als het merkloze Salbutamol. Als een luchtwegverwijder en een luchtwegbeschermer / ontstekingsremmer gelijktijdig moeten worden toegediend, gebruik dan eerst de luchtwegverwijder (blauw) en na vijf tot tien minuten de luchtwegbeschermer / ontstekingsremmer (oranje of bruin). Overleg altijd eerst met de arts hoe, hoeveel en hoelang je dit medicijn mag gebruiken. Stel ook het het maximum aantal pufs in voor dit medicijn in het detailscherm van de teller. Standaard staat het maximum op 200.",
+  "preset_medicine_qvar" : "Qvar (100 of meer) bevat beclometason in een dosisaerosol. Seretide bevat salmeterol en fluticason. dit is een combinatie van een langwerkende luchtwegverijderaar en een lokaal werkzaam corticostroid. Qvar bevat alleen het lokaal werkzame corticosteroid vergelijkbaar met bv becotide. Belangrijkste verschik met andere inhalatiecorticosteroiden is dat Qvar een ander draaggas gebruikt waardoor het corticosteroid is opgelost ipv in een suspensie. Overleg altijd eerst met de arts hoe, hoeveel en hoelang je dit medicijn mag gebruiken. Stel ook het het maximum aantal pufs in voor dit medicijn in het detailscherm van de teller. Standaard staat het maximum op 200.",
+  "preset_medicine_foster" : "Foster (120) is een geneesmiddel behorend tot de groep luchtwegverwijders in combinatie met corticosteroïden of bijnierschorshormonen, dat ervoor zorgt dat vernauwde luchtwegen verwijd worden en dat de luchtwegen beschermd worden tegen prikkels die benauwdheid veroorzaken. Overleg altijd eerst met de arts hoe, hoeveel en hoelang je dit medicijn mag gebruiken. Stel ook het het maximum aantal pufs in voor dit medicijn in het detailscherm van de teller. Standaard staat het maximum op 200.",
+  "preset_medicine_other" : "Salbutamol (200) is te krijgen in inhalatiepoeder, inhalatievloeistof, spray, onder de merknamen Airomir, Ventolin, Salamol Steri-Neb. En als het merkloze Salbutamol. Als een luchtwegverwijder en een luchtwegbeschermer / ontstekingsremmer gelijktijdig moeten worden toegediend, gebruik dan eerst de luchtwegverwijder (blauw) en na vijf tot tien minuten de luchtwegbeschermer / ontstekingsremmer (oranje of bruin). Overleg altijd eerst met de arts hoe, hoeveel en hoelang je dit medicijn mag gebruiken. Stel ook het het maximum aantal pufs in voor dit medicijn in het detailscherm van de teller. Standaard staat het maximum op 200.",
+
+  "mood_how_is_it_going_today" : "Hoe benauwd ben je vandaag?",
+  "mood_how_is_it_going_today_ok" : "Niet benauwd",
+  "mood_how_is_it_going_today_mweh" : "Een beetje benauwd",
+  "mood_how_is_it_going_today_sad" : "Benauwd",
+  "mood_how_it_went" : "Benauwdheid per dag",
+  "mood_no_entries" : "Er zijn nog niet genoeg gegevens om het rapport te tonen",
+
+
+  "today_counted" : "Vandaag geteld:",
+  "today_last" : "Voor het laatst om:",
+  "today_no_entries" : "Er is voor vandaag nog niets geteld.",
+
+  "today" : "Vandaag",
+  "gisteren" : "Gisteren"
+}
